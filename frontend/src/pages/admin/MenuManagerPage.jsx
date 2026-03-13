@@ -107,9 +107,13 @@ export default function MenuManagerPage() {
       }
 
       if (editingId) {
-        await api.put(`/menu/${editingId}`, formData);
+        await api.put(`/menu/${editingId}`, formData, {
+          headers: { 'Content-Type': 'multipart/form-data' }
+        });
       } else {
-        await api.post('/menu', formData);
+        await api.post('/menu', formData, {
+          headers: { 'Content-Type': 'multipart/form-data' }
+        });
       }
 
       await fetchMenus();
