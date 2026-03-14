@@ -45,12 +45,10 @@ app.get('/api/menu', async (req, res) => {
   }
 });
 
-app.get('/api/menu/:category', async (req, res) => {
+// Get all menu items (including unavailable — for owner) — MUST be before :category route
+app.get('/api/menu/all', async (req, res) => {
   try {
-    const menu = await Menu.find({
-      category: req.params.category,
-      available: true
-    }).sort('name');
+    const menu = await Menu.find().sort('category name');
     res.json(menu);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -156,10 +154,13 @@ app.get('/api/menu/:id/image', async (req, res) => {
   }
 });
 
-// Get all menu items (including unavailable — for owner)
-app.get('/api/menu/all', async (req, res) => {
+// Get menu by category (must be after /menu/all)
+app.get('/api/menu/:category', async (req, res) => {
   try {
-    const menu = await Menu.find().sort('category name');
+    const menu = await Menu.find({
+      category: req.params.category,
+      available: true
+    }).sort('name');
     res.json(menu);
   } catch (error) {
     res.status(500).json({ error: error.message });

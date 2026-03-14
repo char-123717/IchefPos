@@ -220,12 +220,46 @@
   }
 
   .dashboard__stats {
-    grid-template-columns: 1fr;
+    flex-wrap: wrap;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 12px;
+    zoom: 100%; /* Reset zoom on mobile */
+  }
+
+  .dashboard__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .dashboard__title {
+    font-size: 1.4rem;
+  }
+
+  .dashboard__refresh {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .dashboard__stats {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .stat-card {
+    min-height: auto;
+  }
+
+  .stat-card__subs {
+    flex-direction: column;
+  }
+  
   .dashboard__board {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
-}
+}

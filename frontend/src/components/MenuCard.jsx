@@ -9,10 +9,10 @@ export default function MenuCard({ item, quantity = 0, onAdd, onRemove }) {
           <img 
             src={`${api.defaults.baseURL}/menu/${item._id}/image`} 
             alt={item.name} 
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} 
           />
         ) : (
-          item.image || '🍽️'
+          <span>{item.image || '🍽️'}</span>
         )}
       </div>
       <div className="menu-card__info">

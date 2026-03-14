@@ -164,9 +164,9 @@ export default function MenuManagerPage() {
             <div key={menu._id} className="menu-manager__card">
               <div className="menu-manager__card-img">
                 {menu.imageData ? (
-                  <img src={`${api.defaults.baseURL}/menu/${menu._id}/image`} alt={menu.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src={`${api.defaults.baseURL}/menu/${menu._id}/image`} alt={menu.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
                 ) : (
-                  menu.image || '🍽️'
+                  <span>{menu.image || '🍽️'}</span>
                 )}
               </div>
               <div className="menu-manager__card-body">
